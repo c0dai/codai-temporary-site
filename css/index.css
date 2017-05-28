@@ -1,0 +1,25 @@
+body {
+  background-image: url('/img/bg6.jpg');
+  background-color: #000;
+  background-size: cover;
+ }
+
+body::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+ section {
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
