@@ -37,12 +37,11 @@ section {
 
 #name {
   color: #ddd;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 40px;
   width: 160px;
 }
 
 #name p{
   text-align: center;
-  letter-spacing: 5px;
 }
