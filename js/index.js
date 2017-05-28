@@ -2,11 +2,11 @@ var triang = function (x1, y1, x2, y2, x3, y3) {
   return "M"+x1+","+y1+"L"+x2+","+y2+"L"+x3+","+y3+"Z";
 };
 
-var width = 345,
-    height = 400,
+var width = 160,
+    height = 300,
     n = 20;
 
-var svg = d3.select("section").append("svg")
+var svg = d3.select("#logo").append("svg")
   .attr("title", "cod.ai")
   .attr("version", 1.1)
   .attr("xmlns", "http://www.w3.org/2000/svg")
@@ -40,25 +40,25 @@ var triangles = svg
   .attr("fill-opacity", 0.1)
   .attr("stroke-width", 0.5);
 
-var name = svg.selectAll(".name")
-  .data(colors)
-  .enter()
-  .append("text")
-  .attr("class", "name")
-  .attr("x", 280)
-  .attr("y", height/2+12)
-  .attr("font-family", "'Abel', sans-serif")
-  .attr("font-size", "60px")
-  .attr("text-anchor", "middle")
-  .attr("fill", color)
-  .text("cod.ai");
+// var name = svg.selectAll(".name")
+//   .data(colors)
+//   .enter()
+//   .append("text")
+//   .attr("class", "name")
+//   .attr("x", 280)
+//   .attr("y", height/2+12)
+//   .attr("font-family", "'Abel', sans-serif")
+//   .attr("font-size", "60px")
+//   .attr("text-anchor", "middle")
+//   .attr("fill", color)
+//   .text("cod.ai");
 
 // setInterval(function () {
   triangles.attr("d", function(d) {
       return triang(
          0, height/2,
-         180, height/2,
-         Math.random()*160 + 20, Math.random()*(height-20));
+         width, height/2,
+         Math.random()*(width-20) + 20, Math.random()*(height-20));
   });
 // }, 300);
 
