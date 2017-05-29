@@ -4,7 +4,11 @@ var triang = function (x1, y1, x2, y2, x3, y3) {
 
 var width = 160,
     height = 300,
-    n = 20;
+    n = 20,
+    padding = 20,
+    color = "#fff",
+    duration = 2000,
+    littleDelay = 200;
 
 var svg = d3.select("#logo").append("svg")
   .attr("title", "cod.ai")
@@ -18,10 +22,7 @@ var svg = d3.select("#logo").append("svg")
 var data = d3.range(n).map(function(d, i) {
   return { x: 0, y: 0 };
 });
-var color = "#fff";
-var colors = [color];
 
-var j = 0;
 var triangles = svg
   .selectAll(".triangles")
   .data(data)
@@ -30,35 +31,33 @@ var triangles = svg
   .attr("class", "triangles")
   .attr("fill", function (d,i) {
     // return "none";
-    return colors[0];
+    return color;
   })
   .attr("stroke", function (d,i) {
-    // return colors[0];
+    // return color;
     return "none";
   })
   .attr("stroke-opacity", 1)
   .attr("fill-opacity", 0.1)
   .attr("stroke-width", 0.5);
 
-// var name = svg.selectAll(".name")
-//   .data(colors)
-//   .enter()
-//   .append("text")
-//   .attr("class", "name")
-//   .attr("x", 280)
-//   .attr("y", height/2+12)
-//   .attr("font-family", "'Abel', sans-serif")
-//   .attr("font-size", "60px")
-//   .attr("text-anchor", "middle")
-//   .attr("fill", color)
-//   .text("cod.ai");
+triangles
+.attr("d", function(d) {
+  return triang(
+     0, height/2,
+     width, height/2,
+     Math.random()*(width-padding) + padding, Math.random()*(height-padding));
+});
 
-// setInterval(function () {
-  triangles.attr("d", function(d) {
-      return triang(
-         0, height/2,
-         width, height/2,
-         Math.random()*(width-20) + 20, Math.random()*(height-20));
+setInterval(function () {
+  triangles
+  .transition()
+  .duration(function(d, i) { return duration; })
+  .attr("d", function(d) {
+    return triang(
+       0, height/2,
+       width, height/2,
+       Math.random()*(width-padding) + padding, Math.random()*(height-padding));
   });
-// }, 300);
+}, duration + littleDelay);
 
