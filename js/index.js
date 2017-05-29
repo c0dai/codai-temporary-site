@@ -37,27 +37,28 @@ var triangles = svg
     // return color;
     return "none";
   })
-  .attr("stroke-opacity", 1)
-  .attr("fill-opacity", 0.1)
-  .attr("stroke-width", 0.5);
+  .attr("fill-opacity", 0.1);
+  //.attr("stroke-opacity", 1)
+  //.attr("stroke-width", 0.5);
 
-triangles
-.attr("d", function(d) {
+var generateTriangle = function() {
   return triang(
      0, height/2,
      width, height/2,
-     Math.random()*(width-padding) + padding, Math.random()*(height-padding));
-});
+     Math.random()*(width-padding) + padding, Math.random()*(height-padding)
+  );
+};
 
-setInterval(function () {
+var repeat = function () {
   triangles
   .transition()
   .duration(function(d, i) { return duration; })
-  .attr("d", function(d) {
-    return triang(
-       0, height/2,
-       width, height/2,
-       Math.random()*(width-padding) + padding, Math.random()*(height-padding));
-  });
-}, duration + littleDelay);
+  .attr("d", generateTriangle)
+  .delay(littleDelay)
+  .each("end", repeat);
+}
 
+// Draw first triangles
+triangles.attr("d", generateTriangle);
+// Keep drawing triangles
+repeat();
