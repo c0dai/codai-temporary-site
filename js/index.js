@@ -37,7 +37,7 @@ var triangles = svg
     // return color;
     return "none";
   })
-  .attr("fill-opacity", 0.1);
+  .attr("fill-opacity", 0.2);
   //.attr("stroke-opacity", 1)
   //.attr("stroke-width", 0.5);
 
